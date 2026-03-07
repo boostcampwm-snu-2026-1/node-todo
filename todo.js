@@ -31,3 +31,21 @@ if (command === "list") {
     }
   }
 }
+
+if (command === "done") {
+  const id = Number(process.argv[3]);
+
+  const data = fs.readFileSync("todos.json", "utf8");
+  const todos = JSON.parse(data);
+
+  const todo = todos.find(t => t.id === id);
+
+  if (!todo) {
+    console.log("해당 ID를 찾을 수 없습니다.");
+    return;
+  }
+
+  todo.done = true;
+  fs.writeFileSync("todos.json", JSON.stringify(todos));
+  console.log(`ID ${id}번 항목이 완료되었습니다.`);
+}
