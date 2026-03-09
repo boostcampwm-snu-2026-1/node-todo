@@ -25,9 +25,27 @@ if (process.argv[2] == "add") {
 }
 
 // 2. todo 목록 조회하기
+if (process.argv[2] == "list") {
+  if (todolist.length == 0) {
+    console.log("Todo가 없습니다.");
+  } else {
+    for (const task of todolist) {
+      console.log(`[${task.done ? "x" : ""}] ${task.id}. ${task.content}`);
+    }
+  }
+}
 
 // 3. todo 완료 처리하기
-
+if (process.argv[2] == "done") {
+  const id = parseInt(process.argv[3]);
+  if (todolist[id - 1]) {
+    todolist[id - 1].done = true;
+    fs.writeFileSync("todo.json", JSON.stringify(todolist, null, 2));
+    console.log(`ID [${todolist[id - 1].id}]번 항목이 완료되었습니다.`);
+  } else {
+    console.log("해당 ID를 찾을 수 없습니다.");
+  }
+}
 // 4. todo 삭제하기
 
 // 5. todo 내용 변경하기
