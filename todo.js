@@ -38,14 +38,37 @@ if (process.argv[2] == "list") {
 // 3. todo 완료 처리하기
 if (process.argv[2] == "done") {
   const id = parseInt(process.argv[3]);
-  if (todolist[id - 1]) {
-    todolist[id - 1].done = true;
-    fs.writeFileSync("todo.json", JSON.stringify(todolist, null, 2));
-    console.log(`ID [${todolist[id - 1].id}]번 항목이 완료되었습니다.`);
-  } else {
+  const index = todolist.findIndex((task) => task.id == id);
+  if (index == -1) {
     console.log("해당 ID를 찾을 수 없습니다.");
+  } else {
+    todolist[index].done = true;
+    fs.writeFileSync("todo.json", JSON.stringify(todolist, null, 2));
+    console.log(`ID [${todolist[index].id}]번 항목이 완료되었습니다.`);
   }
 }
 // 4. todo 삭제하기
-
+if (process.argv[2] == "delete") {
+  const id = parseInt(process.argv[3]);
+  const index = todolist.findIndex((task) => task.id == id);
+  if (index == -1) {
+    console.log("해당 ID를 찾을 수 없습니다.");
+  } else {
+    todolist.splice(index, 1);
+    fs.writeFileSync("todo.json", JSON.stringify(todolist, null, 2));
+    console.log(`ID [${id}]번 항목이 삭제되었습니다.`);
+  }
+}
 // 5. todo 내용 변경하기
+if (process.argv[2] == "update") {
+  const id = parseInt(process.argv[3]);
+  const newContent = process.argv[4];
+  const index = todolist.findIndex((task) => task.id == id);
+  if (index == -1) {
+    console.log("해당 ID를 찾을 수 없습니다.");
+  } else {
+    todolist[index].content = newContent;
+    fs.writeFileSync("todo.json", JSON.stringify(todolist, null, 2));
+    console.log(`ID [${id}]번 항목이 "${newContent}"로 변경되었습니다.`);
+  }
+}
