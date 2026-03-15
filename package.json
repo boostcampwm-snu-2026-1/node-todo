@@ -1,0 +1,21 @@
+{
+  "name": "simple-node-todo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "node.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/a01034972144-hash/node-todo.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/a01034972144-hash/node-todo/issues"
+  },
+  "homepage": "https://github.com/a01034972144-hash/node-todo#readme"
+}
