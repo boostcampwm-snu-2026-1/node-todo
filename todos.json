@@ -1,12 +1,17 @@
 [
   {
     "id": 1,
-    "content": "todo 만들기",
+    "content": "html 공부하기",
     "done": true
   },
   {
     "id": 2,
-    "content": "책 읽기",
+    "content": "css 공부하기",
+    "done": false
+  },
+  {
+    "id": 3,
+    "content": "js 공부하기",
     "done": false
   }
 ]
